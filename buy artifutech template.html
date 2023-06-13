@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   
+    <title>face-ai</title>
+    <style>
+        html {
+	width:100%
+}
+::-moz-selection {
+background:#0f0f0f;
+color:#fff;
+text-shadow:1px 1px 0 #090909
+}
+::selection {
+background:#080808;
+color:#fff;
+text-shadow:1px 1px 0 #0a0909
+}
+body {
+	background-color:rgb(4, 3, 3);
+	margin:0;
+	padding:0
+}
+.ReadMsgBody {
+	width:100%;
+	background-color:#fff
+}
+.ExternalClass {
+	width:100%;
+	background-color:#fff
+}
+a {
+	color:#060606;
+	text-decoration:none;
+	font-weight:400;
+	font-style:normal
+}
+a:hover {
+	color:#262626;
+	text-decoration:none;
+	font-weight:400;
+	font-style:normal
+}
+p, div {
+	margin:0!important
+}
+table {
+	border-collapse:collapse
+}
+@media only screen and (max-width:640px) {
+body {
+width:auto!important
+}
+table table {
+width:100%!important
+}
+td[class=full_width] {
+width:100%!important
+}
+td[class=spacer] {
+width:30px!important
+}
+td[class=spacer_spec] {
+display:none!important
+}
+div[class=div_scale] {
+width:440px!important;
+margin:0 auto!important
+}
+table[class=table_scale] {
+width:440px!important;
+margin:0 auto!important
+}
+td[class=td_scale] {
+width:440px!important;
+margin:0 auto!important
+}
+img[class=img_scale] {
+width:100%!important;
+height:auto!important
+}
+img[class=divider] {
+width:100%!important;
+height:2px!important
+}
+td[class=divider] {
+width:100%!important;
+display:block!important;
+float:left;
+text-align:inherit!important
+}
+}
+@media only screen and (max-width:479px) {
+body {
+width:auto!important
+}
+table table {
+width:100%!important
+}
+td[class=full_width] {
+width:100%!important
+}
+div[class=div_scale] {
+width:280px!important;
+margin:0 auto!important
+}
+table[class=table_scale] {
+width:280px!important;
+margin:0 auto!important
+}
+td[class=td_scale] {
+width:280px!important;
+margin:0 auto!important
+}
+img[class=img_scale] {
+width:100%!important;
+height:auto!important
+}
+img[class=divider] {
+width:100%!important;
+height:2px!important
+}
+td[class=spacer] {
+display:none!important
+}
+td[class=spacer_spec] {
+display:none!important
+}
+td[class=divider] {
+width:100%!important;
+display:block!important;
+float:left;
+text-align:inherit!important
+}
+td[class=center] {
+text-align:center!important
+}
+td[class=subject_line] {
+float:left;
+width:240px;
+display:block!important;
+text-align:left!important;
+padding:15px 20px!important
+}
+td[class=contact] {
+float:left;
+width:240px;
+display:block!important;
+text-align:left!important;
+padding:0 20px 15px!important;
+padding-bottom:20px!important
+}
+td[class=social_left] {
+float:left;
+width:240px;
+display:block!important;
+text-align:center!important;
+padding:20px 20px 0!important
+}
+td[class=social_right] {
+float:left;
+width:240px;
+display:block!important;
+text-align:center!important;
+padding:0 20px!important
+}
+td[class=one_one] {
+width:240px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+padding-right:20px!important;
+text-align:inherit!important
+}
+td[class=one_half] {
+width:240px!important;
+padding-bottom:0!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_half_last] {
+width:240px!important;
+margin-top:40px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important;
+padding-top:0!important
+}
+td[class=one_third_fed] {
+width:240px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_third_fed_sec] {
+width:240px!important;
+margin-top:20px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_third_fed_last] {
+width:240px!important;
+margin-top:20px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_third] {
+width:240px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_third_sec] {
+width:240px!important;
+margin-top:40px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=two_third_last] {
+width:240px!important;
+margin-top:40px!important;
+display:block!important;
+float:left;
+padding-left:20px!important;
+text-align:inherit!important
+}
+td[class=two_third] {
+width:240px!important;
+display:block!important;
+float:left;
+margin-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_third_last] {
+width:240px!important;
+margin-top:40px!important;
+display:block!important;
+float:left;
+margin-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_fourth] {
+width:110px!important;
+display:block!important;
+float:left;
+margin-left:20px!important;
+text-align:inherit!important
+}
+td[class=one_fourth_last] {
+width:110px!important;
+margin-top:20px!important;
+display:block!important;
+float:left;
+margin-left:2fixed0px!important;
+text-align:inherit!important
+}
+}
+
+
+
+
+    </style>
+  </head>
+  <body >
+    
+
+     
+    
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"  style="padding: 0; margin: 0;">
+    <!-- START OF TOP BAR-->
+   
+    <!-- END OF TOP BAR-->
+    <!-- START OF VERTIXAL SPACER BLOCK-->
+  
+    <!-- END OF VERTIXAL SPACER BLOCK-->
+    <!-- START OF FEATURED AREA BLOCK-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0"  style="padding:0; margin: 0;">
+            <tr>
+              <!-- START OF LEFT COLUMN-->
+              <td class="td_scale" width="600" bgcolor="#fd4326" align="center" valign="top" style="padding: 0px; font-size:14px ; color:#959595; font-family: Arial,sans-serif; line-height: 24px; "><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                  <!-- START OF BANNER-->
+                  <tr>
+                    <td class="center" id="image1" align="center" valign="top"  style="padding:0; font-size: 16px; line-height: 24px; font-family:Lucida Sans Unicode; color:#262626; margin: 0 !important;"><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fimg1.png?alt=media&token=40c560fb-32ec-42e3-9e19-68587cca5845" width="600" height="200" alt="featured banner" border="0" style="display: block;" /> </a>
+                    
+                    </td>
+                   
+                  </tr>
+                 
+                    
+                  
+                  <!-- END OF BANNER-->
+                  <!-- START OF VERTICAL SPACER-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- END OF VERTICAL SPACER-->
+                  <!-- START OF HEADING TITLE-->
+                  <tr>
+                    <td class="center" align="center" valign="top" bgcolor="#f0f0f0" style="padding: 0px 20px;  text-shadow: 1px 1px 0px #ffffff;font-size:20px ; color:#444444; font-family: Lucida Sans Unicode; line-height: 30px; ">BUY ARTIFUTECH SDK/API</td>
+                  </tr>
+                  <!-- END OF HEADING TITLE-->
+                  <!-- START OF VERTICAL SPACER-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- END OF VERTICAL SPACER-->
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td class="center" align="center" valign="top" bgcolor="#f0f0f0" style="padding: 0px 20px;  text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "> Artifutech is a pioneer in providing various SDKs & APIs to meet your daily needs & to cope up with the market trends in AR & AI. Please explore our some of the products to learn more. <a href="#" style="color:#060404; font-weight: bold; text-decoration: none; font-style: normal;"></a></td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <!-- START OF VERTICAL SPACER-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- END OF VERTICAL SPACER-->
+                </table></td>         
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; border-bottom: 1px solid #d0d0d0;">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f9f9f9" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="20" bgcolor="#f9f9f9" align="center" valign="middle" style="height: 20px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER-->
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; ">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="40" bgcolor="#f0f0f0" align="center" valign="middle" style="height: 40px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER--></td>
+    </tr>
+    <!-- END OF 3 COL FEATURED PRODUCT OR GALLERY-->
+    <!-- START OF 1/2 COL WITH IMAGE ON TOP-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF LEFT COLUMN-->
+              <td class="one_half" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/ai_web2.jpg?crc=4272210432" width="270" height="130" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;"> Face AI SDK
+
+                    </a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "> Bring our pioneering face AI
+                      to our service supports face detection, landmark detection and face alignment.</td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle" bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#ffffff; margin: 0 !important; "><a href="https://www.artifutech.com/face-ai.html" style="font-weight: bold; color:#FFF; text-decoration: none;"> Learn More </a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF LEFT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF RIGHT COLUMN-->
+              <td class="one_half_last" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fimg3.jfif?alt=media&token=50adf7ec-cc67-4605-9b81-e860a575e7fc" width="270" height="130" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;"> Beauty AR SDK </a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; ">Provide a variety of virtual facial makeup effects, coupled with accurate recognition of key points of the face. </td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle"  bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#ffffff; margin: 0 !important; "><a href="https://www.artifutech.com/beauty-ar.html" style="font-weight: bold; color:#fff; text-decoration: none;"> Learn More </a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF RIGHT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; ">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="40" bgcolor="#f0f0f0" align="center" valign="middle" style="height: 40px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER--></td>
+    </tr>
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF LEFT COLUMN-->
+              <td class="one_half" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/virtualbg_artifutech.jpg?crc=3892174355" width="270" height="180" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;">Background Segmentation
+
+
+
+                    </a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; ">Now change your background into a blurry image, funny or any beautiful or peaceful background image or even with any video content playing at background with our Background Segmentation Technology.</td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle" bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#ffffff; margin: 0 !important; "><a href="https://www.artifutech.com/demos/bg_segment/" style="font-weight: bold; color:#FFF; text-decoration: none;"> Learn More </a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF LEFT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF RIGHT COLUMN-->
+              <td class="one_half_last" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/wed1.png?crc=290881796" width="270" height="180" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;"> AR Invitation Card </a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; ">Invite by Standing on Top of the Invitation card like a Holographic view & make your wedding remarkable
+
+ 
+
+                      A Never seen before Wedding Invitation Card, where You can stand on Top of your card. </td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle"  bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#ffffff; margin: 0 !important; "><a href="https://www.artifutech.com/arwedin.html#trynowarwedin" style="font-weight: bold; color:#fff; text-decoration: none;"> Learn More </a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF RIGHT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; ">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+           
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER--></td>
+    </tr>
+    <!-- END OF 1/2 COL WITH IMAGE ON TOP-->
+    <!-- START OF DIVIDER-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="divider" align="center" valign="top" width="600" bgcolor="#f0f0f0" ><table width="100%">
+                  
+                </table></td>
+            </tr>
+          </table>
+        </div>
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; ">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="40" bgcolor="#f0f0f0" align="center" valign="middle" style="height: 40px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER--></td>
+    </tr>
+    <!-- END OF DIVIDER-->
+    <!-- START OF 1/2 COL WITH IMAGE ON TOP-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF LEFT COLUMN-->
+              <td class="one_half" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/bg32.jpg?crc=3861241377" width="270" height="130" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;"> Virtual Mask Try-on </a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td valign="top" align="center" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "> Image and real time webcam face detection, protect yourself from COVID19 with a virtual face mask.
+
+                      try on to fit your exact size. </td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle"  bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#ffffff; margin: 0 !important; "><a href="https://www.artifutech.com/virtual-mask.html" style="font-weight: bold; color:#fff; text-decoration: none;"> Learn More</a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF LEFT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF RIGHT COLUMN-->
+              <td class="one_half_last" align="left" valign="top" width="270" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://th.bing.com/th/id/OIP.OSss4KTvvSm-l7tE6wwTLAHaEK?pid=ImgDet&rs=1" width="270" height="130" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                  <tr>
+                    <td height="12" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; color:#262626; font-family: Lucida Sans Unicode; line-height: 26px; "><a href="#" style="font-weight: normal; color:#262626; text-decoration: none;"> Fingers Tracking Technology</a></td>
+                  </tr>
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td height="10" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF TEXT-->
+                  <tr>
+                    <td align="center" valign="top" style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "> The finger tracking system is focused on user-data interaction, where the user interacts with virtual data, by handling  in a virtual manner. </td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <tr>
+                    <td height="20" bgcolor="#f0f0f0" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF BUTTON-->
+                  <tr>
+                    <td align="center" width="" valign="top" style=" padding: 0px; font-size:14px ; color:#ffffff; font-family: Arial,sans-serif; line-height: 24px;"><table border="0" width="" align="center" cellpadding="0" cellspacing="0" bgcolor="#fd4326" style="margin: 0;">
+                        <tr>
+                          <td align="center" valign="middle" bgcolor="black" style="padding: 7px 15px; border:1px solid #79e3f6; font-size: 13px; line-height: 18px; font-family: Arial,sans-serif; color:#fff; margin: 0 !important; "><a href="https://www.artifutech.com/fingers-track.html" style="font-weight: bold; color:#fff; text-decoration: none;"> Learn More</a></td>
+                        </tr>
+                      </table></td>
+                  </tr>
+                  <!-- END OF BUTTON-->
+                </table></td>
+              <!-- END OF RIGHT COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+  
+        <div class="div_scale" style="background:#f0f0f0; width:600px; ">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <td class="one_one" align="center" valign="top" width="560" bgcolor="#f0f0f0" style="padding-top: 20px; padding-bottom: 20px;"><table width="100%">
+                  <!-- START OF HEADING TITLE-->
+                  
+                  <!-- END OF HEADING TITLE-->
+                </table></td>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <!-- END OF DIVIDER WITH HEADING-->
+    <!-- START OF 1/4 COLUMN-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF FIRST COLUMN-->
+              <td class="one_fourth" align="left" valign="top" width="125" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/bg_artifutech.jpg?crc=520446808" width="125" height="90" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                </table></td>
+              <!-- END OF FIRST COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF SECOND COLUMN-->
+              <td class="one_fourth" align="left" valign="top" width="125" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://www.artifutech.com/images/bg3.jpg?crc=4048661139" width="125" height="90" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                </table></td>
+              <!-- END OF SECOND COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF THIRD COLUMN-->
+              <td class="one_fourth_last" align="left" valign="top" width="125" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fimg4.jfif?alt=media&token=aba72cda-ed3a-42d8-b7af-0263731bb498" width="125" height="90" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+                </table></td>
+              <!-- END OF THIRD COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <!-- START OF FOURTH COLUMN-->
+              <td class="one_fourth_last" align="left" valign="top" width="125" bgcolor="#f0f0f0" ><table width="100%">
+                  <!-- START OF IMAGE-->
+                  <tr>
+                    <td valign="top" style="padding: 0px; font-size:13px ; color:#727272; font-family: Arial,sans-serif; line-height: 23px; "><a href="#" style="font-style: normal;"> <img class="img_scale" src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fimg5.jfif?alt=media&token=9e8e1bee-474b-4fe6-922a-5eace04bdb35" width="125" height="90" alt="image" border="0" style="display: block;" /> </a></td>
+                  </tr>
+                  <!-- END OF IMAGE-->
+               </table></td>
+              <!-- END OF FOURTH COLUMN-->
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f0f0f0" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- JUST A VERTICAL SPACER-->
+        <div class="div_scale" style="width:600px; display: block; ">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="40" bgcolor="#f0f0f0" align="center" valign="middle" style="height: 40px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+        <!-- END OF JUST A VERTICAL SPACER--></td>
+    </tr>
+    <!-- END OF 1/4 COLUMN-->
+    <!-- START OF SOCIAL BLOCK-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f9f9f9" style="padding:0; margin: 0; border-top: 1px solid #d0d0d0;">
+            <tr>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f9f9f9" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <td class="social_left" align="left" valign="middle" width="173" bgcolor="#f9f9f9" ><table width="100%">
+                  <tr>
+                    <td class="spacer" height="20" bgcolor="#f9f9f9" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <!-- START OF HEADING-->
+                 
+                  <!-- END OF HEADING-->
+                  <tr>
+                    <td class="spacer" height="20" bgcolor="#f9f9f9" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                </table></td>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f9f9f9" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+              <td class="social_right" align="right" valign="top" width="367" bgcolor="#f9f9f9" ><table width="100%">
+                  <tr>
+                    <td height="20" bgcolor="#f9f9f9" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="center" align="right" valign="top"  style="padding: 0px; text-shadow: 1px 1px 0px #ffffff;font-size:16px ; line-height: 26px; color:#262626; font-family: Lucida Sans Unicode; "><span> <a href="http://fb.com/artifutech" > <img src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Ffbook.png?alt=media&token=24d317c7-4376-44dc-8bc9-58e2fae88b86" width="30px" height="30px" alt="dribbble"  style="display: inline; margin-left: 5px;" /> </a> <a href="https://api.whatsapp.com/send?phone=919519393432&text=&source=&data=#" > <img src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fwhatsapp.png?alt=media&token=6ba25a20-c9f1-468e-b953-700aaa9e3189" width="30px" height="30px" alt="twetter"  style="display: inline; margin-left: 5px;" /> </a> <a href="https://www.instagram.com/artifutech/ "> <img src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Finstagram.png?alt=media&token=41cc0028-f657-4477-9321-b7987bafc530" width="30px" height="30px" alt="instagram"  style="display: inline; margin-left: 5px;" /> </a> <a href="https://www.youtube.com/channel/UCtSy0-KNE6QzYXnwVF4zlTg" > <img src="https://firebasestorage.googleapis.com/v0/b/web-artifutech.appspot.com/o/email_template_images%2Fytub.png?alt=media&token=bb05052a-794c-459d-af06-d958fbad6eff" width="30px" height="30px" alt="youtub"  style="display: inline;margin-left: 5px;" /> </a>  </span></td>
+                  </tr>
+                  <tr>
+                    <td class="" height="20" bgcolor="#f9f9f9" style="padding:0; line-height: 0;">&nbsp;</td>
+                  </tr>
+                </table></td>
+              <td class="spacer" width="20" align="left" valign="top" bgcolor="#f9f9f9" style="margin: 0 !important; padding: 0 !important; line-height: 0 !important;">&nbsp;</td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <!-- END OF SOCIAL BLOCK-->
+    <!-- START OF FOOTER-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#353535" style="padding:0; margin: 0;">
+            <tr>
+              <td class="" align="center" valign="top" width="600" bgcolor="#353535" ><table align="center" width="100%">
+                    <!-- START OF TEXT-->
+                  <tr>
+                    <td align="center" valign="top" style="border-top: 1px solid #2b2b2b; padding: 40px 20px; font-size:13px ; color:#bbbbbb; font-family: Arial,sans-serif; line-height: 23px; "> All Rights Reserved,&nbsp;Artifutech Artificial Future Technology Private Limited <br />
+                      <span style="color:#ffffff;"> <a href="https://www.artifutech.com/face-ai.html" style="color:#ffffff; font-style: normal; text-decoration: none; "> Face AI</a> &nbsp;|&nbsp;<a href="https://www.artifutech.com/fingers-track.html" style="color:#ffffff; font-style: normal; text-decoration: none;"> Fingers Tracking</a> &nbsp;|&nbsp;<a href="https://www.artifutech.com/beauty-ar.html" style="color:#ffffff; font-style: normal; text-decoration: none;"> 
+                
+                        
+                        Beauty AR SDK </a> &nbsp;&nbsp;<a href="#" style="color:#ffffff; font-style: normal; text-decoration: none; ">  </a> </span></td>
+                  </tr>
+                  <!-- END OF TEXT-->
+                  <!-- START OF LOGO-->
+                  <!-- <tr>
+                    <td align="center" valign="top" style="border-top: 1px solid #484848; padding: 20px; font-size:13px ; color:#bbbbbb; font-family: Arial,sans-serif; line-height: 23px; "><a href="https://www.artifutech.com/" style="font-style: normal;"> <img src="https://th.bing.com/th/id/OIP.wJBUh9acKVDbrLFH_WRVtwAAAA?pid=ImgDet&rs=1" width="89" height="89" alt="logo" border="0" style="display: inline-block;" /> </a></td>
+                  </tr> -->
+                  <!-- END OF LOGO-->
+                </table></td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <!-- END OF FOOTER-->
+    <!-- START OF VERTIXAL SPACER BLOCK-->
+    <tr>
+      <td class="full_width" align="center" width="100%" bgcolor="#FFF" ><div class="div_scale" style="width:600px;">
+          <table class="table_scale" width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFF" style="padding:0; margin: 0;">
+            <tr>
+              <td class="td_scale" width="600" height="40" bgcolor="#FFF" align="center" valign="middle" style="height: 40px; padding: 0px; font-size:0 ; color:#686868; font-family: Arial,sans-serif; line-height: 0; ">&nbsp;</td>
+            </tr>
+          </table>
+        </div></td>
+    </tr>
+    <!-- END OF VERTIXAL SPACER BLOCK-->
+  </table>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
